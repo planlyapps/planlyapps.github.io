@@ -1,0 +1,53 @@
+/* Christmas Planner theme: "wrapped parcel". Pine-green ink on frosty paper, tied with a cranberry ribbon. */
+@font-face { font-family: "Young Serif"; src: url(fonts/YoungSerif-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Karla"; src: url(fonts/Karla-normal.woff2) format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
+
+:root {
+  --paper: #F4F6F1;
+  --field: #FFFFFF;
+  --surface: #E6EBE3;
+  --line: #D9E0D5;
+  --line-strong: #BCC7B8;
+  --ink: #1E3B30;
+  --ink-2: #57685F;
+  --accent: #A8283D;
+  --ribbon-dark: #861E30;
+  --good: #2E6A47;
+  --good-bg: #DFEBE1;
+  --warn: #A8283D;
+  --warn-bg: #F6E2E5;
+  --shadow: rgba(30, 59, 48, .16);
+  --scrim: rgba(30, 59, 48, .4);
+  --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2357685F' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --font-display: "Young Serif", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Karla", "Segoe UI", system-ui, sans-serif;
+}
+body { font-size: 16.5px; }
+h1 { letter-spacing: -.02em; }
+
+/* The parcel: the one ornamental moment in the app. A pine box tied with a ribbon, with the countdown on its tag. */
+.parcel { position: relative; margin: 4px 0 6px; padding: 30px 24px 28px; overflow: hidden; border-radius: 6px; background: var(--ink); color: var(--paper); }
+.parcel::before, .parcel::after { content: ""; position: absolute; background: var(--accent); box-shadow: 0 0 0 1px var(--ribbon-dark); }
+.parcel::before { top: 0; bottom: 0; right: 22%; width: 16px; }
+.parcel::after { left: 0; right: 0; bottom: 30%; height: 16px; }
+.parcel > * { position: relative; z-index: 1; }
+.parcel .yr { margin: 0; font-size: 15px; color: #C9D6CD; }
+.parcel .count { margin: 10px 0 0; font: 400 clamp(84px, 26vw, 148px)/.9 var(--font-display); letter-spacing: -.04em; font-variant-numeric: lining-nums; }
+.parcel .count-l { margin: 8px 0 0; font: 400 clamp(22px, 6vw, 30px)/1.15 var(--font-display); }
+.parcel .tag { display: inline-flex; gap: 18px; flex-wrap: wrap; margin: 30px 0 0; padding: 10px 16px; border-radius: 4px; background: var(--paper); color: var(--ink); font-size: 15px; }
+.parcel .tag b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.parcel .btn.ghost { margin-top: 22px; background: var(--paper); color: var(--ink); }
+
+/* Home summaries */
+.money-line { display: flex; justify-content: space-between; gap: 12px; margin: 14px 0 0; font-size: 15px; color: var(--ink-2); }
+.money-line b { color: var(--ink); font-weight: 600; }
+
+/* Gifts: one heading per person, showing their spend against their budget */
+.person-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 26px 0 6px; border-bottom: 1px solid var(--line); }
+.person-h button { padding: 0; border: 0; background: none; font: 400 21px/1.2 var(--font-display); text-align: left; }
+.person-h button:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.person-h span { font-size: 14px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.person-h.over span { color: var(--warn); }
+.person-h + .note { padding-top: 10px; }
+.mini-add { margin: 8px 0 0; padding: 6px 0; border: 0; background: none; font-size: 14px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+.mini-add:hover { color: var(--ink); }
